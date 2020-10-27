@@ -1,0 +1,432 @@
+{
+  "intents": [
+    {
+      "intent": "Card",
+      "examples": [
+        {
+          "text": "xxxx1234xxxx"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Choice",
+      "examples": [
+        {
+          "text": "Chicken"
+        },
+        {
+          "text": "Chicken half kg"
+        },
+        {
+          "text": "Chocolate Milkshake"
+        },
+        {
+          "text": "Dal"
+        },
+        {
+          "text": "Mutton"
+        },
+        {
+          "text": "mutton 1/2 kg"
+        },
+        {
+          "text": "Pork"
+        },
+        {
+          "text": "Rice"
+        },
+        {
+          "text": "Rice half kg"
+        },
+        {
+          "text": "Roti"
+        },
+        {
+          "text": "Salt"
+        },
+        {
+          "text": "Sugar"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Drinks",
+      "examples": [
+        {
+          "text": "drinks list"
+        },
+        {
+          "text": "Need a drink"
+        },
+        {
+          "text": "thirsty"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Food",
+      "examples": [
+        {
+          "text": "Need to order food"
+        },
+        {
+          "text": "what's interesting"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "groceries",
+      "examples": [
+        {
+          "text": "groceries"
+        },
+        {
+          "text": "need some groceries"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Meat",
+      "examples": [
+        {
+          "text": "Chicken"
+        },
+        {
+          "text": "Fish"
+        },
+        {
+          "text": "meat"
+        },
+        {
+          "text": "Mutton"
+        },
+        {
+          "text": "Pork"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "OTP",
+      "examples": [
+        {
+          "text": "1234"
+        }
+      ],
+      "description": ""
+    }
+  ],
+  "entities": [
+    {
+      "entity": "greetings",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "Thank you",
+          "synonyms": [
+            "thanks",
+            "thanks alot"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    }
+  },
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "OTP",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Enter you OTP:"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Card",
+      "dialog_node": "node_10_1602213868010",
+      "previous_sibling": "node_1_1602213998706"
+    },
+    {
+      "type": "standard",
+      "title": "Final",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "The required is debited. Your order is placed successfully. The order will be delivered in a span of 30 minutes"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#OTP",
+      "dialog_node": "node_1_1602213998706",
+      "previous_sibling": "node_9_1602213697199"
+    },
+    {
+      "type": "standard",
+      "title": "Groceries",
+      "output": {
+        "generic": [
+          {
+            "title": "Salt",
+            "source": "https://resize.indiatvnews.com/en/resize/newbucket/715_-/2020/03/salt-1585304899.jpg",
+            "description": "RS 30/- per kg",
+            "response_type": "image"
+          },
+          {
+            "title": "Sugar",
+            "source": "https://www.lark.com/wp-content/uploads/2020/01/thumb_blog-114.jpg",
+            "description": "Rs 35/- per kg",
+            "response_type": "image"
+          },
+          {
+            "title": "Rice",
+            "source": "https://www.tradologie.com/lp/img/pro1.jpg",
+            "description": "Rs 55/- per kg",
+            "response_type": "image"
+          }
+        ]
+      },
+      "conditions": "#groceries",
+      "dialog_node": "node_3_1602212369618",
+      "previous_sibling": "Welcome"
+    },
+    {
+      "type": "standard",
+      "title": "greetings final",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "It was great serving. Keep visiting our site"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "@greetings",
+      "dialog_node": "node_6_1602214250798",
+      "previous_sibling": "node_10_1602213868010"
+    },
+    {
+      "type": "standard",
+      "title": "Meat",
+      "output": {
+        "generic": [
+          {
+            "title": "Chicken",
+            "source": "https://post.healthline.com/wp-content/uploads/2020/09/2375-Raw_Chicken-1296x728-header-1200x628.jpg",
+            "description": "Rs 220/- per kg",
+            "response_type": "image"
+          },
+          {
+            "title": "Mutton",
+            "source": "https://image.freepik.com/free-photo/fresh-raw-lamb-ribs-cutting-board_45583-1295.jpg",
+            "description": "Rs 700/- kg",
+            "response_type": "image"
+          },
+          {
+            "title": "Pork",
+            "source": "https://previews.123rf.com/images/gbh007/gbh0071402/gbh007140200047/25665725-fresh-raw-pork-on-white-background.jpg",
+            "description": "Rs 600/- per kg",
+            "response_type": "image"
+          },
+          {
+            "title": "Fish",
+            "source": "https://image.shutterstock.com/image-photo/fresh-uncooked-red-fish-fillet-260nw-245412856.jpg",
+            "description": "Rs 400/- per kg",
+            "response_type": "image"
+          }
+        ]
+      },
+      "conditions": "#Meat",
+      "dialog_node": "node_7_1602212809483",
+      "previous_sibling": "node_9_1602212621732"
+    },
+    {
+      "type": "standard",
+      "title": "Drinks",
+      "output": {
+        "generic": [
+          {
+            "title": "Lemonade",
+            "source": "https://malayalam.boldsky.com/img/2012/04/19-19-lemonade-190412.jpg",
+            "description": "Rs 30/- per kg",
+            "response_type": "image"
+          },
+          {
+            "title": "Chocolate Milkshake",
+            "source": "https://www.elephantasticvegan.com/wp-content/uploads/2018/08/vegan-chocolate-milkshake-7.jpg",
+            "description": "Rs 120/-",
+            "response_type": "image"
+          },
+          {
+            "title": "Red Velvet Milkshake",
+            "source": "https://hips.hearstapps.com/del.h-cdn.co/assets/15/49/1448987993-delish-holiday-milkshakes-red-velvet.jpg",
+            "description": "Rs 150/-",
+            "response_type": "image"
+          }
+        ]
+      },
+      "conditions": "#Drinks",
+      "dialog_node": "node_8_1602213037401",
+      "previous_sibling": "node_7_1602212809483"
+    },
+    {
+      "type": "standard",
+      "title": "Food",
+      "output": {
+        "generic": [
+          {
+            "title": "Roti",
+            "source": "https://www.tarladalal.com/members/9306/big/big_roti_(_how_to_make_soft_roti_or_phulka_or_chapati)-14074.jpg",
+            "description": "Rs 15/- for 3",
+            "response_type": "image"
+          },
+          {
+            "title": "Paneer 65",
+            "source": "https://www.spiceupthecurry.com/wp-content/uploads/2019/08/paneer-65-recipe-1-500x500.jpg",
+            "description": "Rs 200/-",
+            "response_type": "image"
+          },
+          {
+            "title": "Dal",
+            "source": "https://static01.nyt.com/images/2018/04/19/dining/19COOKING-DAL3/19COOKING-DAL3-articleLarge-v3.jpg",
+            "response_type": "image"
+          }
+        ]
+      },
+      "conditions": "#Food",
+      "dialog_node": "node_9_1602212621732",
+      "previous_sibling": "node_3_1602212369618"
+    },
+    {
+      "type": "standard",
+      "title": "Card",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Enter your debit card details:"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "#Choice",
+      "dialog_node": "node_9_1602213697199",
+      "previous_sibling": "node_8_1602213037401"
+    },
+    {
+      "type": "standard",
+      "title": "Welcome",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hello. How can I help you?"
+              },
+              {
+                "text": "Hi! Nice to meet you"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "random"
+          },
+          {
+            "values": [
+              {
+                "text": "Groceries"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [
+              {
+                "text": "Food"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [
+              {
+                "text": "Meat"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "values": [
+              {
+                "text": "Drinks"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "welcome",
+      "dialog_node": "Welcome"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "off_topic": {
+      "enabled": true
+    },
+    "disambiguation": {
+      "prompt": "Did you mean:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "None of the above"
+    },
+    "system_entities": {
+      "enabled": true
+    },
+    "human_agent_assist": {
+      "prompt": "Did you mean:"
+    },
+    "spelling_auto_correct": true
+  },
+  "learning_opt_out": false,
+  "name": "Online Order Processing Bot",
+  "language": "en",
+  "description": ""
+}
